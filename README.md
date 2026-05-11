@@ -5,9 +5,11 @@ This is the official repository of our [ICML 2026](https://icml.cc/Conferences/2
 
 # 1. Environment
 
-# 2. Watermarked Text Generation
+# 2. Dataset Preparation
 
-# 3. Watermarked Text Detection
+# 3. Watermarked Text Generation
+
+# 4. Watermarked Text Detection
 
 # Citation
 
