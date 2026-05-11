@@ -9,7 +9,9 @@ This is the official repository of our [ICML 2026](https://icml.cc/Conferences/2
 
 # 3. Watermarked Text Generation
 
-# 4. Watermarked Text Detection
+# 4. Paraphrasing Attacks on Watermarked Texts
+
+# 5. Watermarked Text Detection
 
 # Citation
 
