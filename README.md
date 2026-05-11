@@ -3,17 +3,17 @@
 
 This is the official repository of our [ICML 2026](https://icml.cc/Conferences/2026) paper '[AliMark: Enhancing Robustness of Sentence-Level Watermarking Against Text Paraphrasing](https://openreview.net/forum?id=jQmlwZSPuw)'.
 
-# 1. Environment
+## 1. Environment
 
-# 2. Dataset Preparation
+## 2. Dataset Preparation
 
-# 3. Watermarked Text Generation
+## 3. Watermarked Text Generation
 
-# 4. Paraphrasing Attacks on Watermarked Texts
+## 4. Paraphrasing Attacks on Watermarked Texts
 
-# 5. Watermarked Text Detection
+## 5. Watermarked Text Detection
 
-# Citation
+## Citation
 
 Please consider citing our papers if you find them useful:
 
