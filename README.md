@@ -13,6 +13,12 @@ conda activate alimark
 pip install -r requirements.txt
 ```
 
+Additionally, you should also set up the OpenAI API key as an environment variable to enable the GPT-3.5 paraphraser:
+
+```bash
+export OPENAI_API_KEY="your_api_key_here"
+```
+
 ## 2. Dataset Preparation
 
 We have uploaded three datasets, including Booksum, C4, and Natural Questions (NQ), used in our experiments. Each dataset contains 500 text samples. They are organized in JSON format, with each entry comprising a **prompt** and a **natural text**. See the following as an example:
@@ -33,7 +39,7 @@ We have uploaded three datasets, including Booksum, C4, and Natural Questions (N
 
 ## Citation
 
-Please consider citing our papers if you find them useful:
+Please consider citing our paper if you find them useful:
 
 <!-- ```bibtex
 @inproceedings{li2026alimark,
@@ -44,3 +50,7 @@ year={2026},
 url={https://openreview.net/forum?id=jQmlwZSPuw}
 }
 ``` -->
+
+## Acknowledgment
+
+This project is built upon the foundational work of [MarkLLM](https://github.com/THU-BPM/MarkLLM) and [PMark](https://github.com/PMark-repo/PMark). We sincerely thank the authors and contributors of these repositories for their excellent open-source work.
