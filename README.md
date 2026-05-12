@@ -20,7 +20,7 @@ We have uploaded three datasets, including Booksum, C4, and Natural Questions (N
 ```json
 {
     "prompt": "The Minister's Vigil Dimmesdale mounts the scaffold.", 
-    "natural_text": "The pain in his breast causes him to scream aloud, and he worries that everyone in the town will wake up and ..."
+    "natural_text": "The pain in his breast causes him to scream aloud, and ..."
 }
 ```
 
