@@ -17,7 +17,6 @@ if __name__ == "__main__":
     parser.add_argument('--watermark_embedding_dim',                    type=int,   default=768)
     parser.add_argument('--watermark_block_size',                       type=int,   default=4)
     parser.add_argument("--watermark_num_next_sentence_candidates",     type=int,   default=64)
-    parser.add_argument("--watermark_rs_dropout",                       type=float, default=1.0)
     parser.add_argument("--min_new_sentences",                          type=int,   default=12)
     parser.add_argument("--dataset_name",                               type=str,   default="booksum")
     parser.add_argument("--vllm_gpu_mem_util",                          type=float, default=0.2)
