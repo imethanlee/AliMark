@@ -2,7 +2,7 @@
 
 export CUDA_VISIBLE_DEVICES=0
 
-python 2_attack.py \
+python 4_evaluation.py \
     --watermark_algorithm AliMark \
     --watermark_model facebook/opt-1.3b \
     --watermark_embedder all-mpnet-base-v2 \

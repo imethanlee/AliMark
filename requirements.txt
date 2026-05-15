@@ -116,7 +116,6 @@ openai==2.21.0
 openai-harmony==0.0.8
 opencv-python-headless==4.13.0.92
 outlines_core==0.2.11
-packaging @ file:///home/task_176104878999627/conda-bld/packaging_1761049078606/work
 pandas==3.0.1
 parrot @ git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git@03084c54b64019ba5fa0b620b9c70ad81123e458
 partial-json-parser==0.2.1.1.post7

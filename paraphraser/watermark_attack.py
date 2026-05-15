@@ -1,8 +1,9 @@
-import random
-import openai
 import os
-from openai import OpenAI
+import random
+
+import openai
 from nltk.tokenize import sent_tokenize
+from openai import OpenAI
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
 from paraphraser.evaluation.tools.text_editor import DipperParaphraser
@@ -10,25 +11,35 @@ from paraphraser.watermark_attack_semstamp import WatermarkAttackSemStamp
 
 
 class WatermarkAttack:
-    def __init__(self, watermark_model_name, enable_dipper=True, enable_watermark_attack_semstamp=True):
+    def __init__(self, 
+                 watermark_model_name, 
+                 load_dipper_paraphraser=True, 
+                 load_semstamp_paraphraser=True
+                 ):
         super(WatermarkAttack, self).__init__()
 
-        self._openai_client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+        if not os.getenv("OPENROUTER_API_KEY"):
+            raise ValueError("OPENROUTER_API_KEY environment variable is not set.")
+        self._openrouter_client = OpenAI(
+            base_url="https://openrouter.ai/api/v1",
+            api_key=os.getenv("OPENROUTER_API_KEY"),
+        )
 
-        if enable_dipper:
+        if load_dipper_paraphraser:
             self._dipper_paraphraser = DipperParaphraser(
                 tokenizer=T5Tokenizer.from_pretrained("google/t5-v1_1-xxl"),
                 model=T5ForConditionalGeneration.from_pretrained("kalpeshk2011/dipper-paraphraser-xxl", device_map='auto'),
                 lex_diversity=60, order_diversity=0, sent_interval=1, 
                 max_new_tokens=100, do_sample=True, top_p=0.75, top_k=None)
-        if enable_watermark_attack_semstamp:
-            self._watermark_attack_semstamp = WatermarkAttackSemStamp(watermark_model_name=watermark_model_name)
+        
+        if load_semstamp_paraphraser:
+            self._semstamp_paraphraser = WatermarkAttackSemStamp(watermark_model_name=watermark_model_name)
 
     def pegasus_paraphrase_attack(self, text: str, bigram: bool) -> str:
-        return self._watermark_attack_semstamp.pegasus_paraphrase(text, bigram=bigram)
+        return self._semstamp_paraphraser.pegasus_paraphrase(text, bigram=bigram)
 
     def parrot_paraphrase_attack(self, text: str, bigram: bool) -> str:
-        return self._watermark_attack_semstamp.parrot_paraphrase(text, bigram=bigram)
+        return self._semstamp_paraphraser.parrot_paraphrase(text, bigram=bigram)
     
     def dipper_paraphrase_attack(self, text: str, mode="all") -> str:
         assert self._dipper_paraphraser is not None, "DIPPER paraphraser not initialized."
@@ -49,7 +60,7 @@ class WatermarkAttack:
 """
         while True:
             try: 
-                response = self._openai_client.chat.completions.create(
+                response = self._openrouter_client.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
                         {
@@ -68,8 +79,7 @@ class WatermarkAttack:
                     presence_penalty=0
                 )
             except openai.APIError as e:
-                print(f"OpenAI API error occurred: {e}")
-                print("Retrying...")
+                print(f"OpenRouter API error occurred: {e} | Retrying...")
                 continue
             break
         return response.choices[0].message.content
@@ -133,7 +143,7 @@ class WatermarkAttack:
     
 
 if __name__ == "__main__":
-    attack = WatermarkAttack("facebook/opt-1.3b", enable_dipper=False, enable_watermark_attack_semstamp=False)
+    attack = WatermarkAttack("facebook/opt-1.3b", load_dipper_paraphraser=False, load_semstamp_paraphraser=False)
     text = """
 Pujols has 3,865 hits in his career -- a total he eclipsed during Wednesday night's 9-7 victory over the Orioles at Comerica Park. His 712th was a two-out, 
 single homer that cut the O's lead to 6-4 going into the ninth in Friday night's final regular-season contest.                                              

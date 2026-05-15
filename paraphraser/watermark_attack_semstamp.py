@@ -5,9 +5,12 @@ from transformers import (AutoTokenizer, PegasusForConditionalGeneration,
                           PegasusTokenizer)
 
 # from dipper import DipperParaphraser
-from paraphraser.semstamp_paraphrasers import (SParrot, accept_by_bigram_overlap,
-                                   extract_list, gen_bigram_prompt, gen_prompt,
-                                   query_openai, query_openai_bigram, gen_prompt_together)
+from paraphraser.semstamp_paraphrasers import (SParrot,
+                                               accept_by_bigram_overlap,
+                                               extract_list, gen_bigram_prompt,
+                                               gen_prompt, gen_prompt_together,
+                                               query_openai,
+                                               query_openai_bigram)
 
 PUNCTS = '!.?'
 from itertools import groupby
