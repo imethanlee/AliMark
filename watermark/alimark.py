@@ -329,50 +329,7 @@ if __name__ == "__main__":
     print("Unwatermarked Text:\n", unwatermarked_text)
     print("n_sents:", len(sent_tokenize(unwatermarked_text)))
     
-    unwatermarked_detect_result = alimark.detect_watermark(unwatermarked_text, lower_ratio=0.5, upper_ratio=2.0, enable_merge=True, enable_split=True)
-    print("Unwatermarked Detect Result:", unwatermarked_detect_result)
-    unwatermarked_detect_result = alimark.detect_watermark(unwatermarked_text, lower_ratio=0.5, upper_ratio=1.5, enable_merge=True, enable_split=True)
-    print("Unwatermarked Detect Result:", unwatermarked_detect_result)
-    unwatermarked_detect_result = alimark.detect_watermark(unwatermarked_text, lower_ratio=1.0, upper_ratio=1.0, enable_merge=True, enable_split=True)
-    print("Unwatermarked Detect Result:", unwatermarked_detect_result)
-    
-    unwatermarked_detect_result = alimark.detect_watermark(unwatermarked_text, lower_ratio=0.5, upper_ratio=2.0, enable_merge=False, enable_split=False)
-    print("Unwatermarked Detect Result:", unwatermarked_detect_result)
-    unwatermarked_detect_result = alimark.detect_watermark(unwatermarked_text, lower_ratio=0.5, upper_ratio=1.5, enable_merge=False, enable_split=False)
-    print("Unwatermarked Detect Result:", unwatermarked_detect_result)
-    unwatermarked_detect_result = alimark.detect_watermark(unwatermarked_text, lower_ratio=1.0, upper_ratio=1.0, enable_merge=False, enable_split=False)
-    print("Unwatermarked Detect Result:", unwatermarked_detect_result)
-
-
-
     watermarked_text = alimark.generate_watermarked_text(prompt)
     print("Watermarked Text:\n", watermarked_text)
     print("n_sents:", len(sent_tokenize(watermarked_text)))
-    
-    watermarked_detect_result = alimark.detect_watermark(watermarked_text, lower_ratio=0.5, upper_ratio=2.0, enable_merge=True, enable_split=True)
-    print("Watermarked Detect Result:", watermarked_detect_result)
-    watermarked_detect_result = alimark.detect_watermark(watermarked_text, lower_ratio=0.5, upper_ratio=1.5, enable_merge=True, enable_split=True)
-    print("Watermarked Detect Result:", watermarked_detect_result)
-    watermarked_detect_result = alimark.detect_watermark(watermarked_text, lower_ratio=1.0, upper_ratio=1.0, enable_merge=True, enable_split=True)
-    print("Watermarked Detect Result:", watermarked_detect_result)
-
-    watermarked_detect_result = alimark.detect_watermark(watermarked_text, lower_ratio=0.5, upper_ratio=2.0, enable_merge=False, enable_split=False)
-    print("Watermarked Detect Result:", watermarked_detect_result)
-    watermarked_detect_result = alimark.detect_watermark(watermarked_text, lower_ratio=0.5, upper_ratio=1.5, enable_merge=False, enable_split=False)
-    print("Watermarked Detect Result:", watermarked_detect_result)
-    watermarked_detect_result = alimark.detect_watermark(watermarked_text, lower_ratio=1.0, upper_ratio=1.0, enable_merge=False, enable_split=False)
-    print("Watermarked Detect Result:", watermarked_detect_result)
-
-    # print("Detecting Watermark...")
-    # extracted_bit_sequences = alimark._extract_bit_signals(sent_tokenize(unwatermarked_text))
-    # print(f"UWM -- Extracted Bit Sequences: {extracted_bit_sequences}")
-    # target_bit_sequences = alimark._secret_bit_sequence[:12]
-    # print(f"Target Bit Sequences:           {target_bit_sequences}")
-
-    # extracted_bit_sequences = alimark._extract_bit_signals(sent_tokenize(watermarked_text))
-    # print(f"WM --- Extracted Bit Sequences: {extracted_bit_sequences}")
-    # target_bit_sequences = alimark._secret_bit_sequence[:12]
-    # print(f"Target Bit Sequences:           {target_bit_sequences}")
-
-
 
